@@ -1,0 +1,50 @@
+{
+  "name": "rexvalve.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "imagemin": "rm -rf public/images && imagemin src/images/* --out-dir=public/images",
+    "minimages": "imagemin public/images-portada/* --out-dir=public/images-portada",
+    "clean": "rm -rf public/fonts && cp -a src/fonts public/fonts",
+    "start": "node app.js",
+    "post": "postcss public/css/estilos.css --use autoprefixer -o public/css/estilos.css",
+    "minify-css": "postcss public/css/estilos.css > public/css/estilos.min.css",
+    "build-js": "terser public/js/scripts.js public/js/swiper.js public/js/vue.js -c -m --source-map -o public/js/build.min.js",
+    "build-css": "node-sass --output-style  --include-path src src/scss/estilos.scss public/css/estilos.css",
+    "copy-js": "rm -rf public/js && cp -a src/js public/js",
+    "watch-js": "nodemon -w src/js -x \"npm run copy-js\"",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\"",
+    "dev-node": "nodemon app.js",
+    "build": "-x \"npm run post\" && -x \"npm run minify-css\" && -x \"npm run build-js\"",
+    "dev": "npm-run-all -p watch-css dev watch-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "helmet": "^3.23.3",
+    "mongoose": "^5.9.20",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.10",
+    "sequelize": "^6.2.2",
+    "serve-static": "^1.14.1",
+    "tedious": "^8.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "autoprefixer": "^9.8.4",
+    "gzipper": "^3.7.0",
+    "imagemin": "^7.0.1",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.1",
+    "terser": "^4.8.0"
+  }
+}
