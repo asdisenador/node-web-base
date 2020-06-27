@@ -17,7 +17,7 @@
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
     "dev-node": "nodemon app.js",
     "build": "-x \"npm run post\" && -x \"npm run minify-css\" && -x \"npm run build-js\"",
-    "dev": "npm-run-all -p watch-css dev watch-js"
+    "dev": "npm-run-all -p watch-css dev-node watch-js"
   },
   "keywords": [],
   "author": "",
